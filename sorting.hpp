@@ -9,3 +9,4 @@ void insertion_sort(T *arr, long n);
 template <typename T>
 T* merge_sort(T *arr, long n);
 
+#endif
