@@ -17,26 +17,63 @@ void insertion_sort(T *arr, long n) {
 }
 
 template <typename T>
-T* merge(T* left, long leftSize, T* right, long rightSize) {
-    T* result = new T[leftSize + rightSize];
-    long i = 0, j = 0, k = 0;
-    while (i < leftSize && j < rightSize) {
-        if (left[i] <= right[j]) result[k++] = left[i++];
-        else result[k++] = right[j++];
+void merge_sort_recursive(T *arr, int left, int right) {
+    if (left >= right) {
+        return; // Base case
     }
-    while (i < leftSize) result[k++] = left[i++];
-    while (j < rightSize) result[k++] = right[j++];
-    return result;
+    int mid = left + (right - left) / 2;
+    // Sort first and second halves
+    merge_sort_recursive(arr, left, mid);
+    merge_sort_recursive(arr, mid + 1, right);
+    // Merge the sorted halves
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    // Temporary arrays
+    T *L = new T[n1];
+    T *R = new T[n2];
+    // Copy data to temporary arrays L[] and R[]
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (int i = 0; i < n2; i++)
+        R[i] = arr[mid + 1 + i];
+    // Merge the temporary arrays back into arr[left..right]
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+    // Copy the remaining elements of L[], if any
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    // Copy the remaining elements of R[], if any
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+    // Free dynamically allocated memory
+    delete[] L;
+    delete[] R;
 }
 
+
+// Merge sort that takes only the array and the length of the array
 template <typename T>
-T* merge_sort(T* arr, long n) {
-    if (n <= 1) return arr;
-    long mid = n / 2;
-    T* left = merge_sort(arr, mid);
-    T* right = merge_sort(arr + mid, n - mid);
-    return merge(left, mid, right, n - mid);
+void merge_sort(T *arr, int length) 
+{
+    merge_sort_recursive(arr, 0, length - 1);
 }
+
+
 
 template <typename T>
 void improved_quicksort(T *arr, long left, long right) {
