@@ -1,5 +1,6 @@
 #include "sorting.hpp"
-#include <iostream>
+#include <iostream
+#include <algorithm> //For std::swap
 using namespace std; 
 
 template <typename T>
@@ -37,5 +38,30 @@ T* merge_sort(T* arr, long n) {
     return merge(left, mid, right, n - mid);
 }
 
+template <typename T>
+void improved_quicksort(T *arr, long left, long right) {
+    if (left < right) {
+        // Choose the median of three as the pivot
+        long mid = left + (right - left) / 2;
+        if (arr[left] > arr[mid]) std::swap(arr[left], arr[mid]);
+        if (arr[left] > arr[right]) std::swap(arr[left], arr[right]);
+        if (arr[mid] > arr[right]) std::swap(arr[mid], arr[right]);
 
+        T pivot = arr[mid];
+        std::swap(arr[mid], arr[right - 1]); // Hide pivot near the end
+        long i = left, j = right - 1;
 
+        while (true) {
+            while (arr[++i] < pivot); // Move i right past values < pivot
+            while (arr[--j] > pivot); // Move j left past values > pivot
+            if (i >= j) break; // Stop when indices cross
+            std::swap(arr[i], arr[j]);
+        }
+
+        std::swap(arr[i], arr[right - 1]); // Restore pivot to its final position
+
+        // Recursively sort the left and right sub-arrays
+        improved_quicksort(arr, left, i - 1);
+        improved_quicksort(arr, i + 1, right);
+    }
+}
