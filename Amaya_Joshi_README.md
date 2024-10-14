@@ -34,10 +34,12 @@ For this project, my primary contributions were the implementation of the Insert
 
 ## Known Issues
 `Memory Usage in Merge Sort`: While functional, Merge Sort consumes a significant amount of memory when sorting large input sizes due to the additional memory allocations made for the left and right halves. Optimizing memory usage could be a future improvement.
+
 `Performance of Quicksort on Small Arrays`: Quicksort, while efficient for large inputs, sometimes shows poorer performance on very small arrays compared to Insertion Sort, due to the overhead of recursion and partitioning.
 
 ## Additional Information
 `Improved Quicksort Pivot Selection`: We chose to implement the median-of-three strategy for pivot selection, where we selected the first, middle, and last elements and used the median of these values as the pivot. This reduced the number of comparisons needed to partition the array in some cases.
+
 `Performance Considerations`: The C++ std::sort() function was included in the performance tests, and it consistently outperformed our custom implementations due to its optimized hybrid sorting algorithm (which uses IntroSort, a combination of Quicksort, HeapSort, and Insertion Sort).
 
 
@@ -47,13 +49,18 @@ For the performance analysis, we generated random integer sequences of sizes 10,
 <img width="1022" alt="image" src="https://github.com/user-attachments/assets/1c677f01-4115-4ea9-8420-c924eee343e0">
 
 `Insertion Sort`: Expectedly, Insertion Sort performed poorly on larger input sizes, with an O(n²) time complexity. It only performed well on small arrays (size < 100).
+
 `Merge Sort`: Merge Sort displayed O(n log n) behavior, but its memory usage became significant for input sizes above 10,000 due to the additional arrays created during the merge step.
+
 `Quicksort and Randomized Quicksort`: Both versions of Quicksort showed similar performance on average, with randomized Quicksort slightly outperforming the regular version due to reduced risk of encountering the worst case (O(n²)).
+
 `Improved Quicksort`: Improved Quicksort with the median-of-three pivot selection consistently outperformed the basic Quicksort, especially on larger input sizes. The reduction in the number of comparisons helped to make partitioning more efficient.
+
 `C++ std::sort()`: C++’s built-in std::sort() outperformed all the custom implementations due to its highly optimized hybrid sorting algorithm. It maintained O(n log n) performance and showed minimal memory overhead compared to Merge Sort.
 
 ## Explanation of Major Differences
 `Merge Sort vs. Quicksort`: While Merge Sort provides stable O(n log n) performance, it requires significant memory allocation, which can slow down its performance on very large inputs. Quicksort, on the other hand, works in place and usually performs faster in practice, although it doesn't guarantee O(n log n) in the worst case.
+
 `Improved Quicksort`: The median-of-three pivot selection significantly reduced the number of comparisons in certain cases, leading to faster partitioning and improved overall performance.
 
 ## Conclusion
