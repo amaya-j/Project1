@@ -74,7 +74,7 @@ void merge_sort(T *arr, int length)
 }
 
 
-/normal quicksort
+//normal quicksort
 template <typename T>
 void quicksort(T *arr, long n){
     if(n<=1){
