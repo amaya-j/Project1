@@ -74,6 +74,93 @@ void merge_sort(T *arr, int length)
 }
 
 
+/normal quicksort
+template <typename T>
+void quicksort(T *arr, long n){
+    if(n<=1){
+        return;
+    }    
+
+    long pivot_index=particion(arr,n);
+    quicksort(arr, pivot_index);
+
+    quicksort(arr + pivot_index + 1, n - pivot_index - 1);
+
+}
+
+//partition first element
+template <typename T>
+long partition(T* arr, long n) {
+    //First Element
+    T pivot = arr[0];
+    
+    long i = 1; 
+    long j = n - 1; 
+    
+    while (i <= j) {
+        
+        while (i <= j && arr[i] <= pivot) {
+            i++;
+        }
+        
+        while (i <= j && arr[j] > pivot) {
+            j--;
+        }
+        
+        if (i < j) {
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[0], arr[j]);
+    
+    return j;
+}
+
+//random quicksort
+template <typename T>
+void randomized_quicksort (T *arr,long n){
+    if (n<=1)
+        return;
+    long pivot_index= random_partition(arr,n);
+    //left
+    randomized_quicksort(arr, pivot_index);
+    //right
+    randomized_quicksort(arr+pivot_index +1, n- pivot_index-1);
+    
+}
+//partition random quicksort
+template <typename T>
+long random_partition(T* arr, long n){
+    / Select a random index as the pivot
+    long randomIndex = rand() % n;
+    T pivot = arr[randomIndex];
+
+    swap(arr[0], arr[randomIndex]);
+
+    long i = 1;      
+    long j = n - 1;  
+
+    while (i <= j) {
+
+        while (i <= j && arr[i] <= pivot) {
+            i++;
+        }
+
+        while (i <= j && arr[j] > pivot) {
+            j--;
+        }
+
+        if (i < j) {
+            swap(arr[i], arr[j]);
+        }
+    }
+
+    swap(arr[0], arr[j]);
+
+    return j;
+}
+
+
 
 template <typename T>
 void improved_quicksort(T *arr, long n) {
