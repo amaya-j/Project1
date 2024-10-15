@@ -1,3 +1,12 @@
+/**
+ * File Name: sorting.hpp
+ * Contributors: Amaya Joshi, Omar Perez, Aissatou Barry
+ * Description: This header file contains the declarations of various sorting algorithms such 
+ * as insertion sort and merge sort.
+ * The definitions of these functions can be found in the corresponding sorting.cpp file.
+ */
+
+
 #ifndef SORTING_HPP
 #define SORTING_HPP
 
