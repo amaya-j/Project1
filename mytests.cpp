@@ -1,3 +1,12 @@
+//==============================================================
+// File Name: mytests.cpp
+// Developer Names: Aisha Berry, Max Bonsteel, Huy Phan
+// Date: 10/14/2024
+// About: mytests.cpp contains test cases to verify that each
+// sorting algorithm (insertion_sort, merge_sort, quicksort,
+// improved_quicksort, and randomized_quicksort) correctly sorts
+//different types of input arrays. 
+//==============================================================
 #include "sorting.hpp"
 #include <iostream>
 #include "sorting.cpp"
@@ -13,7 +22,11 @@ void print_array(T *arr, long n) {
     cout << endl;
 }
 
-// Test empty array
+//==============================================================
+// Test the empty array
+// Parameter: None
+// Return: None
+//==============================================================
 void test_empty_array() {
     int arr[] = {};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -30,14 +43,26 @@ void test_empty_array() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
     
     cout << endl;
 }
 
+//==============================================================
 // Test single element array
+// Parameter: None
+// Return: None
+//==============================================================
 void test_single_element() {
     int arr[] = {1};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -54,14 +79,26 @@ void test_single_element() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
     
     cout << endl;
 }
 
+//==============================================================
 // Test already sorted array
+// Parameter: None
+// Return: None
+//==============================================================
 void test_sorted_array() {
     int arr[] = {1, 2, 3, 4, 5};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -78,14 +115,26 @@ void test_sorted_array() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
     
     cout << endl;
 }
 
+//==============================================================
 // Test reverse sorted array
+// Parameter: None
+// Return: None
+//==============================================================
 void test_reverse_sorted_array() {
     int arr[] = {5, 4, 3, 2, 1};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -102,14 +151,26 @@ void test_reverse_sorted_array() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
     
     cout << endl;
 }
 
+//==============================================================
 // Test array with all elements the same
+// Parameter: None
+// Return: None
+//==============================================================
 void test_identical_elements_array() {
     int arr[] = {7, 7, 7, 7, 7};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -126,14 +187,26 @@ void test_identical_elements_array() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
 
     cout << endl;
 }
 
+//==============================================================
 // Test large random array
+// Parameter: None
+// Return: None
+//==============================================================
 void test_large_random_array() {
     const long n = 1000;
     int arr[n];
@@ -153,14 +226,26 @@ void test_large_random_array() {
     cout << "Sorted array (Insertion Sort): [First 10 elements shown] ";
     print_array(arr, 10);
 
+    quicksort(arr, n);
+    cout << "Sorted array (QuickSort): [First 10 elements shown] ";
+    print_array(arr, 10);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved QuickSort): [First 10 elements shown] ";
+    print_array(arr, 10);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized QuickSort): [First 10 elements shown] ";
     print_array(arr, 10);
 
     cout << endl;
 }
 
+//==============================================================
 // Test array with negative numbers
+// Parameter: None
+// Return: None
+//==============================================================
 void test_array_with_negatives() {
     int arr[] = {-3, -1, -7, 2, 8, 0, -2};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -177,14 +262,26 @@ void test_array_with_negatives() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
 
     cout << endl;
 }
 
+//==============================================================
 // Test array with duplicates
+// Parameter: None
+// Return: None
+//==============================================================
 void test_array_with_duplicates() {
     int arr[] = {5, 3, 8, 5, 2, 3, 5, 9};
     long n = sizeof(arr) / sizeof(arr[0]);
@@ -201,13 +298,24 @@ void test_array_with_duplicates() {
     cout << "Sorted array (Insertion Sort): ";
     print_array(arr, n);
 
+    quicksort(arr, n);
+    cout << "Sorted array (Quicksort): ";
+    print_array(arr, n);
+
     improved_quicksort(arr, n);
     cout << "Sorted array (Improved Quicksort): ";
+    print_array(arr, n);
+
+    randomized_quicksort(arr, n);
+    cout << "Sorted array (Randomized Quicksort): ";
     print_array(arr, n);
 
     cout << endl;
 }
 
+//==============================================================
+// Main function to run all tests
+//==============================================================
 int main() {
     // Run all test cases
     test_empty_array();
