@@ -1,8 +1,29 @@
+/**
+ * File Name: sorting.cpp
+ * Contributors: Amaya Joshi, Aissatou Barry, Omar Perez
+ * Description: This file contains the implementation of various sorting algorithms 
+ * such as insertion sort, merge sort, quicksort, randomized quicksort, and improved quicksort.
+ */
+
+
 #include "sorting.hpp"
 #include <iostream
 #include <algorithm> //For std::swap
 using namespace std; 
 
+
+/**
+ * Insertion Sort Algorithm
+ * 
+ * Description: Sorts an array using the insertion sort algorithm.
+ * 
+ * @param arr - A pointer to the array that needs to be sorted.
+ * @param n - The number of elements in the array.
+ * 
+ * @return void
+ * 
+ * The function directly modifies the input array.
+ */
 template <typename T>
 void insertion_sort(T *arr, long n) {
     for (long i = 1; i < n; ++i) {
@@ -16,6 +37,18 @@ void insertion_sort(T *arr, long n) {
     }
 }
 
+/**
+ * Merge Sort (Recursive Helper Function)
+ * 
+ * Description: This is the recursive helper function for merge sort. It divides the array 
+ * into two halves and recursively sorts and merges them.
+ * 
+ * @param arr - A pointer to the array to be sorted.
+ * @param left - The starting index of the array.
+ * @param right - The ending index of the array.
+ * 
+ * @return void
+ */
 template <typename T>
 void merge_sort_recursive(T *arr, int left, int right) {
     if (left >= right) {
@@ -66,7 +99,18 @@ void merge_sort_recursive(T *arr, int left, int right) {
 }
 
 
-// Merge sort that takes only the array and the length of the array
+/**
+ * Merge Sort
+ * 
+ * Description: Sorts an array using the merge sort algorithm.
+ * 
+ * @param arr - A pointer to the array to be sorted.
+ * @param length - The number of elements in the array.
+ * 
+ * @return void
+ * 
+ * This function acts as a driver for merge sort by calling the recursive helper function.
+ */
 template <typename T>
 void merge_sort(T *arr, int length) 
 {
@@ -74,14 +118,25 @@ void merge_sort(T *arr, int length)
 }
 
 
-//normal quicksort
+/**
+ * Quicksort
+ * 
+ * Description: Sorts an array using the quicksort algorithm.
+ * 
+ * @param arr - A pointer to the array to be sorted.
+ * @param n - The number of elements in the array.
+ * 
+ * @return void
+ * 
+ * This function sorts the input array in-place using the quicksort algorithm.
+ */
 template <typename T>
 void quicksort(T *arr, long n){
     if(n<=1){
         return;
     }    
 
-    long pivot_index=particion(arr,n);
+    long pivot_index=partiion(arr,n);
     quicksort(arr, pivot_index);
 
     quicksort(arr + pivot_index + 1, n - pivot_index - 1);
@@ -116,7 +171,18 @@ long partition(T* arr, long n) {
     return j;
 }
 
-//random quicksort
+/**
+ * Randomized Quicksort
+ * 
+ * Description: Sorts an array using randomized quicksort, which selects a random pivot.
+ * 
+ * @param arr - A pointer to the array to be sorted.
+ * @param n - The number of elements in the array.
+ * 
+ * @return void
+ * 
+ * This function sorts the input array in-place using a randomly selected pivot for partitioning.
+ */
 template <typename T>
 void randomized_quicksort (T *arr,long n){
     if (n<=1)
@@ -128,7 +194,18 @@ void randomized_quicksort (T *arr,long n){
     randomized_quicksort(arr+pivot_index +1, n- pivot_index-1);
     
 }
-//partition random quicksort
+
+
+/**
+ * Random Partition for Randomized Quicksort
+ * 
+ * Description: Selects a random pivot element and partitions the array based on the pivot.
+ * 
+ * @param arr - A pointer to the array to be partitioned.
+ * @param n - The number of elements in the array.
+ * 
+ * @return The index of the pivot after partitioning.
+ */
 template <typename T>
 long random_partition(T* arr, long n){
     / Select a random index as the pivot
@@ -161,7 +238,18 @@ long random_partition(T* arr, long n){
 }
 
 
-
+/**
+ * Improved Quicksort
+ * 
+ * Description: Sorts an array using an improved version of quicksort that selects the median-of-three as the pivot.
+ * 
+ * @param arr - A pointer to the array to be sorted.
+ * @param n - The number of elements in the array.
+ * 
+ * @return void
+ * 
+ * This function sorts the array in-place using the median-of-three quicksort.
+ */
 template <typename T>
 void improved_quicksort(T *arr, long n) {
     // Base case: If the array has 1 or 0 elements, it is already sorted
